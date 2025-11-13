@@ -51,8 +51,8 @@ def analyze_numbers(numbers):
     analysis["count"] = len(numbers)
     analysis["sum"] = sum(numbers)
     analysis["average"] = analysis["sum"] / analysis["count"]
-    analysis["min"] = min(numbers)
-    analysis["max"] = max(numbers)
+    analysis["minimum"] = min(numbers)
+    analysis["maximum"] = max(numbers)
 
     even = [num for num in numbers if num % 2 == 0]
     odd = [num for num in numbers if num % 2 != 0]
@@ -79,8 +79,8 @@ def display_analysis(analysis):
     print(f"Count: {analysis['count']}")
     print(f"Sum: {analysis['sum']}")
     print(f"Average: {analysis['average']:.2f}")
-    print(f"Minimum: {analysis['min']}")
-    print(f"Maximum: {analysis['max']}")
+    print(f"Minimum: {analysis['mininum']}")
+    print(f"Maximum: {analysis['maximum']}")
     print(f"Even Count: {analysis['even_count']}")
     print(f"Odd Count: {analysis['odd_count']}")
 
