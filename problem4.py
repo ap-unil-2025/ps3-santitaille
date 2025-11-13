@@ -30,9 +30,10 @@ def count_words(filename):
     Returns:
         int: Total number of words
     """
-    # TODO: Open file and count words
-    # Hint: Use split() to separate words
-    pass
+    with open(filename,"r") as f:
+        text = f.read()
+    words = text.split()
+    return len(words)
 
 
 def count_lines(filename):
@@ -45,9 +46,9 @@ def count_lines(filename):
     Returns:
         int: Total number of lines
     """
-    # TODO: Open file and count lines
-    pass
-
+    with open(filename, "r") as f:
+        lines = f.readlines()
+    return len(lines)
 
 def count_characters(filename, include_spaces=True):
     """
@@ -60,10 +61,15 @@ def count_characters(filename, include_spaces=True):
     Returns:
         int: Total number of characters
     """
-    # TODO: Open file and count characters
-    # If include_spaces is False, don't count spaces
-    pass
+    with open(filename, "r") as f:
+        text = f.read()
 
+    if include_spaces:
+        return len(text)
+    else:
+        # Do not count spaces ' ' (we still count newlines and other chars)
+        no_spaces = text.replace(" ", "")
+        return len(no_spaces)
 
 def find_longest_word(filename):
     """
@@ -75,9 +81,15 @@ def find_longest_word(filename):
     Returns:
         str: The longest word found
     """
-    # TODO: Find the longest word
-    # Hint: You might need to remove punctuation
-    pass
+    with open(filename, "r") as f:
+        text = f.read()
+
+    words = text.split()
+    if not words:
+        return ""
+
+    longest = max(words, key=len)
+    return longest
 
 
 def word_frequency(filename):
@@ -95,12 +107,15 @@ def word_frequency(filename):
 
     frequency = {}
 
-    # TODO: Open file
-    # TODO: Read all words
-    # TODO: Convert to lowercase
-    # TODO: Remove punctuation (use string.punctuation)
-    # TODO: Count frequency of each word
+    with open(filename, "r") as f:
+        text = f.read().lower()
 
+    words = text.split()
+    for word in words:
+        word = word.strip(string.punctuation)
+        if word:
+            frequency[word] = frequency.get(word, 0) + 1
+            
     return frequency
 
 
